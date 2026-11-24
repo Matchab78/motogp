@@ -26,3 +26,7 @@ ORDER BY ra.year DESC, points DESC;
 SELECT MIN(ra.year) AS premiere_saison, MAX(ra.year) AS derniere_saison,
        COUNT(DISTINCT ra.race_id) AS courses_avec_resultats
 FROM races ra JOIN results r ON r.race_id=ra.race_id;
+
+
+
+
