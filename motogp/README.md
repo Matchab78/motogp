@@ -2,6 +2,24 @@
 
 Projet prêt à exécuter sur la base PostgreSQL du groupe. Données : les six CSV `data2` inclus. Le nom historique du dossier parent `f1-local` et le schéma source par défaut `f1` ne désignent pas le sujet analysé.
 
+## Démarrer PostgreSQL avec Docker si aucune base ne tourne
+
+Ouvrir Docker Desktop et attendre que son moteur soit démarré. Dans ce dossier `motogp/`, copier `.env.example` en `.env` (ne pas écraser un `.env` existant), puis :
+
+```bash
+docker compose up -d --wait
+python run.py configure
+python run.py import-data
+python run.py all
+python run.py docs
+```
+
+Pour cette nouvelle base Docker, saisir dans `configure` : hôte `localhost`, port `5433`, base `motogp`, utilisateur `motogp`, mot de passe identique à `POSTGRES_PASSWORD` dans `.env` (`motogp_local` avec l'exemple fourni), schéma source `motogp`, préfixe de sortie `analytics`, SSL `prefer`. Le port 5433 de l'ordinateur est redirigé vers le port 5432 du conteneur.
+
+`import-data` s'utilise une seule fois sur cette base vide. Aux lancements suivants : `docker compose up -d --wait`, puis `python run.py all`. `docker compose stop` arrête PostgreSQL sans supprimer les données. Les données persistent dans le volume Docker. Modifier `.env` ne change pas le mot de passe d'une base déjà initialisée.
+
+Le lanceur Python ne démarre pas Docker. `setup` installe dbt et `configure` enregistre la connexion. Si un autre service utilise déjà le port 5433, modifier le port à gauche dans `compose.yaml`, puis renseigner ce même port dans `configure`.
+
 ## Démarrage pour la personne qui a accès à PostgreSQL
 
 Prérequis : Python 3.10 à 3.13 (3.12 recommandé), PostgreSQL 15+ accessible, la base existante et un utilisateur pouvant lire les sources et créer des schémas/tables dans cette base. Le projet ne crée pas la base et ne modifie pas ses droits.

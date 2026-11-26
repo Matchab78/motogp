@@ -1,0 +1,20 @@
+name: motogp-fil-rouge
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: motogp
+      POSTGRES_USER: motogp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Copier .env.example vers .env avant de lancer Docker}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - motogp_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motogp -d motogp"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+volumes:
+  motogp_postgres_data:
