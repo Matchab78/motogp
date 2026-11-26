@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: motogp_raw
+    database: motogp
+    schema: f1
+    tables:
+      - name: constructor_world_championship
+      - name: grand_prix_events_held
+      - name: grand_prix_race_winners
+      - name: riders_finishing_positions
+      - name: riders_info
+      - name: same_nation_podium_lockouts

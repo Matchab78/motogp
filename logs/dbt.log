@@ -1,0 +1,97 @@
+[0m12:45:06.978734 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4fb2b1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4c414c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4c416110>]}
+
+
+============================== 12:45:06.983270 | fd0cef91-5960-47af-afae-65fc087354c0 ==============================
+[0m12:45:06.983270 [info ] [MainThread]: Running with dbt=1.13.0-b1
+[0m12:45:06.983756 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'hints_enabled': 'True', 'write_json': 'True', 'version_check': 'True', 'empty': 'None', 'invocation_command': 'dbt init motogp', 'printer_width': '80', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'target_path': 'None', 'no_print': 'None', 'static_parser': 'True', 'profiles_dir': '/home/rsaoban/.dbt', 'use_colors': 'True', 'log_path': 'logs', 'cache_selected_only': 'False', 'introspect': 'True', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'log_format': 'default', 'warn_error': 'None', 'fail_fast': 'False', 'partial_parse': 'True'}
+[0m12:45:06.984077 [debug] [MainThread]: Tracking: tracking
+[0m12:45:06.994925 [info ] [MainThread]: Creating dbt configuration folder at /home/rsaoban/.dbt
+[0m12:45:06.996709 [debug] [MainThread]: Starter project path: /home/rsaoban/.local/lib/python3.11/site-packages/dbt/include/starter_project
+[0m12:45:06.998879 [info ] [MainThread]: Setting up your profile.
+[0m12:47:04.262036 [info ] [MainThread]: Profile motogp written to /home/rsaoban/.dbt/profiles.yml using target's profile_template.yml and your supplied values.
+[0m12:47:04.266743 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m12:47:04.268180 [info ] [MainThread]: dbt version: 1.13.0-b1
+[0m12:47:04.268984 [info ] [MainThread]: python version: 3.11.9
+[0m12:47:04.269695 [info ] [MainThread]: python path: /usr/bin/python3
+[0m12:47:04.270424 [info ] [MainThread]: os info: Linux-6.8.9-100.fc38.x86_64-x86_64-with-glibc2.37
+[0m12:47:04.296035 [info ] [MainThread]: Using profiles dir at /home/rsaoban/.dbt
+[0m12:47:04.296418 [info ] [MainThread]: Using profiles.yml file at /home/rsaoban/.dbt/profiles.yml
+[0m12:47:04.296658 [info ] [MainThread]: Using dbt_project.yml file at /home/rsaoban/ynov/motogp/motogp/dbt_project.yml
+[0m12:47:04.297077 [info ] [MainThread]: adapter type: postgres
+[0m12:47:04.297342 [info ] [MainThread]: adapter version: 1.11.0
+[0m12:47:04.381807 [info ] [MainThread]: Configuration:
+[0m12:47:04.382197 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m12:47:04.382460 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m12:47:04.382678 [info ] [MainThread]: Required dependencies:
+[0m12:47:04.382923 [debug] [MainThread]: Executing "git --help"
+[0m12:47:04.388737 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:47:04.389121 [debug] [MainThread]: STDERR: "b''"
+[0m12:47:04.389366 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:47:04.389639 [info ] [MainThread]: Connection:
+[0m12:47:04.389891 [info ] [MainThread]:   host: 127.0.0.1
+[0m12:47:04.390125 [info ] [MainThread]:   port: 5433
+[0m12:47:04.390340 [info ] [MainThread]:   user: postgres
+[0m12:47:04.390543 [info ] [MainThread]:   database: motogp
+[0m12:47:04.390743 [info ] [MainThread]:   schema: analytics
+[0m12:47:04.390939 [info ] [MainThread]:   connect_timeout: 10
+[0m12:47:04.391149 [info ] [MainThread]:   role: None
+[0m12:47:04.391352 [info ] [MainThread]:   search_path: None
+[0m12:47:04.391550 [info ] [MainThread]:   keepalives_idle: 0
+[0m12:47:04.391747 [info ] [MainThread]:   sslmode: None
+[0m12:47:04.391944 [info ] [MainThread]:   sslcert: None
+[0m12:47:04.392151 [info ] [MainThread]:   sslkey: None
+[0m12:47:04.392353 [info ] [MainThread]:   sslrootcert: None
+[0m12:47:04.392552 [info ] [MainThread]:   application_name: dbt
+[0m12:47:04.392749 [info ] [MainThread]:   autocommit: False
+[0m12:47:04.392943 [info ] [MainThread]:   retries: 1
+[0m12:47:04.393353 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m12:47:04.451660 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m12:47:04.483610 [debug] [MainThread]: Using postgres connection "debug"
+[0m12:47:04.483961 [debug] [MainThread]: On debug: select 1 as id
+[0m12:47:04.484222 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:47:04.502510 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "127.0.0.1", port 5433 failed: FATAL:  password authentication failed for user "postgres"
+
+[0m12:47:04.508293 [debug] [MainThread]: Postgres adapter: Error running SQL: select 1 as id
+[0m12:47:04.508649 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m12:47:04.508941 [debug] [MainThread]: On debug: No close available on handle
+[0m12:47:04.509208 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m12:47:04.509470 [info ] [MainThread]: [31m1 check failed:[0m
+[0m12:47:04.509698 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  connection to server at "127.0.0.1", port 5433 failed: FATAL:  password authentication failed for user "postgres"
+  
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m12:47:04.509986 [info ] [MainThread]: Your new dbt project "motogp" was created!
+Initialized new project in /home/rsaoban/ynov/motogp/motogp/motogp
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:47:04.510250 [info ] [MainThread]: [31mYour profile may need adjustments. You can find the logs of `dbt debug` above[0m
+[0m12:47:04.511122 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 117.60111, "process_in_blocks": "85416", "process_kernel_time": 0.194517, "process_mem_max_rss": "126324", "process_out_blocks": "192", "process_user_time": 1.450371}
+[0m12:47:04.511532 [debug] [MainThread]: Command `dbt init` succeeded at 12:47:04.511450 after 117.60 seconds
+[0m12:47:04.511796 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m12:47:04.512071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4c2be150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4c2be8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6f4beac810>]}
+[0m12:47:04.512378 [debug] [MainThread]: Flushing usage events
+[0m12:47:05.651096 [debug] [MainThread]: An error was encountered while trying to flush usage events
