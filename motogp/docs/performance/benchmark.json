@@ -1,24 +1,81 @@
 {
-  "method": "SQL exécuté avec psql dans PostgreSQL Docker",
-  "script": "sql/benchmark.sql",
+  "method": "SQL / psql / PostgreSQL Docker",
   "rows": 10000000,
   "repetitions": 3,
-  "before_ms": 439.704,
-  "after_ms": 19.133,
-  "speedup": 22.981445669785188,
-  "difference_ms": 420.571,
-  "reduction_pct": 95.64866364645307,
-  "result_before": 16220,
-  "result_after": 16220,
-  "before_times_ms": [
-    439.704,
-    446.953,
-    432.151
-  ],
-  "after_times_ms": [
-    38.926,
-    19.133,
-    13.994
-  ],
-  "plans": "docs/performance/benchmark_sql.txt"
+  "script": "sql/benchmark.sql",
+  "plans": "docs/performance/benchmark_sql.txt",
+  "benchmarks": [
+    {
+      "id": 1,
+      "name": "Pilote + saison",
+      "index": "B-tree composé (season_key, rider_key)",
+      "before_times_ms": [
+        682.042,
+        698.875,
+        575.977
+      ],
+      "after_times_ms": [
+        44.33,
+        21.538,
+        23.196
+      ],
+      "before_ms": 682.042,
+      "after_ms": 23.196,
+      "difference_ms": 658.846,
+      "reduction_pct": 96.5990364229769,
+      "speedup": 29.40343162614244,
+      "result_before": 16220,
+      "result_after": 16220,
+      "before_plan": "Seq Scan",
+      "after_plan": "Bitmap Index Scan puis Bitmap Heap Scan"
+    },
+    {
+      "id": 2,
+      "name": "Catégorie + saison",
+      "index": "B-tree composé (class_key, season_key)",
+      "before_times_ms": [
+        1238.645,
+        1032.564,
+        1078.556
+      ],
+      "after_times_ms": [
+        50.683,
+        29.93,
+        26.61
+      ],
+      "before_ms": 1078.556,
+      "after_ms": 29.93,
+      "difference_ms": 1048.626,
+      "reduction_pct": 97.22499341712437,
+      "speedup": 36.035950551286334,
+      "result_before": 58392,
+      "result_after": 58392,
+      "before_plan": "Seq Scan",
+      "after_plan": "Bitmap Index Scan puis Bitmap Heap Scan"
+    },
+    {
+      "id": 3,
+      "name": "Constructeur depuis 2018",
+      "index": "B-tree partiel (constructor_key) WHERE season_key >= 2018",
+      "before_times_ms": [
+        810.745,
+        576.955,
+        535.771
+      ],
+      "after_times_ms": [
+        53.903,
+        53.067,
+        53.186
+      ],
+      "before_ms": 576.955,
+      "after_ms": 53.186,
+      "difference_ms": 523.769,
+      "reduction_pct": 90.7816034179442,
+      "speedup": 10.847873500545257,
+      "result_before": 68124,
+      "result_after": 68124,
+      "before_plan": "Seq Scan",
+      "after_plan": "Bitmap Index Scan puis Bitmap Heap Scan"
+    }
+  ]
 }

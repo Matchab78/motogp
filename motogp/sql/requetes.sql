@@ -1,7 +1,5 @@
 -- PostgreSQL. Sources : les six CSV de outputs/f1-local/data2.
--- f1 est le nom technique du schéma déclaré dans votre sources.yml dbt.
--- Si vous utilisez import_motogp.sql, remplacez f1 par motogp ci-dessous.
-SET search_path TO f1, public;
+SET search_path TO motogp, public;
 
 -- Les fichiers couvrent plusieurs catégories du championnat moto.
 -- Pour la seule catégorie nommée MotoGP dans la source : WHERE class = 'MotoGP™'.

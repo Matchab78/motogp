@@ -75,3 +75,5 @@ Source : [Moto GP World Championship (1949–2022)](https://www.kaggle.com/datas
 Quentin Ott, Mathis Chabault, Herman Tongo, Saoban Radji.
 
 Le schéma demandé est dans `docs/schema_etoile.png`. Les plans et mesures avant/après index sont dans `docs/performance/`. Benchmark SQL : `sql/benchmark.sql`. Commandes et comparaison des deux tests dans [docs/performance/README.md](docs/performance/README.md).
+
+Les trois benchmarks SQL, leurs plans avant/après et les gains mesurés sont décrits dans [rapport_performance.md](rapport_performance.md).

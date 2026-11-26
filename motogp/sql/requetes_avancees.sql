@@ -1,7 +1,5 @@
--- PostgreSQL. Sources : outputs/f1-local/data2, après import des CSV.
--- f1 correspond au schéma déclaré dans sources.yml ; ce nom ne désigne pas le sujet.
--- Avec import_motogp.sql, remplacer f1 par motogp.
-SET search_path TO f1, public;
+-- PostgreSQL. Sources : les six CSV data2 importés dans le schéma motogp.
+SET search_path TO motogp, public;
 
 -- Indicateurs fondés sur les lignes disponibles, toutes catégories sauf indication.
 -- Pas de points, départs, abandons, temps au tour ni identifiant/date de course.
@@ -11,7 +9,7 @@ SET search_path TO f1, public;
 -- 1. CLASSEMENT : RANK / DENSE_RANK / ROW_NUMBER
 -- Question métier : qui sont les trois premiers rangs de vainqueurs par saison
 -- et catégorie depuis 2015, selon les victoires enregistrées ?
--- Adaptation du classement F1 par points. Les ex aequo peuvent dépasser 3 pilotes.
+-- Les ex aequo peuvent faire apparaître plus de trois pilotes.
 -- ============================================================================
 WITH victoires_saison AS (
     SELECT season AS saison, class AS categorie, rider AS pilote,
@@ -115,7 +113,7 @@ ORDER BY constructeur, saison;
 -- ============================================================================
 -- 5. CTE RÉCURSIVE
 -- Question métier : comment évolue la couverture des victoires par décennie ?
--- Même principe que la requête F1, avec bornes calculées depuis les données.
+-- Bornes des décennies calculées depuis les données.
 -- C'est une génération de série temporelle, pas une hiérarchie métier.
 -- ============================================================================
 WITH RECURSIVE bornes AS (
@@ -138,7 +136,7 @@ ORDER BY d.annee_debut;
 -- ============================================================================
 -- 6. ENCHAÎNEMENT DE CTEs
 -- Question métier : quels constructeurs dominent les victoires de leur catégorie
--- entre 2014 et la dernière saison disponible, plafonnée à 2024 comme en F1 ?
+-- entre 2014 et 2024, selon les saisons disponibles ?
 -- Remplace la fiabilité : aucun départ ni abandon disponible pour mesurer celle-ci.
 -- ============================================================================
 WITH periode AS (

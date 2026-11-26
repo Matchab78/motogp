@@ -1,0 +1,13 @@
+{
+  "requêtes": 6,
+  "lignes_par_requete": [
+    97,
+    222,
+    289,
+    1850,
+    9,
+    18
+  ],
+  "statut": "réussite sur PostgreSQL",
+  "date": "2026-11-26"
+}
