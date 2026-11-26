@@ -8,5 +8,5 @@
 ) }}
 -- No reliable updated_at in CSV: compare attributes on each execution.
 select circuit_name, circuit_country, historical_events_reported
-from {{ ref('stg_circuits') }}
+from {{ ref('stg_motogp__grand_prix_events_held') }}
 {% endsnapshot %}

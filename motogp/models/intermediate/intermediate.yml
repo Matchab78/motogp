@@ -18,6 +18,10 @@ models:
     description: Nom du circuit.
     data_tests:
     - not_null
+    - relationships:
+        arguments:
+          to: ref('stg_motogp__grand_prix_events_held')
+          field: circuit_name
   - name: class_name
     description: Catégorie telle que libellée par la source.
     data_tests:
@@ -46,4 +50,9 @@ models:
   - name: circuit_matched
     description: circuit matched
     data_tests:
+    - not_null
+  - name: source_row_id
+    description: Identifiant technique source.
+    data_tests:
+    - unique
     - not_null

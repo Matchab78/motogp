@@ -1,7 +1,7 @@
 -- Business rule: no recorded win may disappear or be multiplied in the star.
 with expected as (
     select season, class_name, count(*) as expected_wins
-    from {{ ref('stg_race_winners') }} group by season, class_name
+    from {{ ref('stg_motogp__grand_prix_race_winners') }} group by season, class_name
 ), actual as (
     select f.season_key as season, c.class_name, sum(f.win_count) as actual_wins
     from {{ ref('fct_wins') }} f

@@ -1,10 +1,11 @@
 version: 2
 models:
-- name: stg_race_winners
+- name: stg_motogp__grand_prix_race_winners
   description: Toutes les victoires source conservées, y compris les doublons apparents.
   columns:
   - name: win_id
-    description: Empreinte de la ligne nettoyée et de son numéro parmi les doublons.
+    description: Identifiant de ligne source converti en texte ; pas un identifiant
+      de course.
     data_tests:
     - unique
     - not_null
@@ -31,11 +32,6 @@ models:
     description: Nom du pilote tel que nettoyé.
     data_tests:
     - not_null
-  - name: duplicate_ordinal
-    description: Occurrence parmi les lignes identiques.
-    data_tests:
-    - not_null
-    - non_negative
   - name: win_count
     description: 'Mesure additive : une victoire enregistrée.'
     data_tests:
@@ -45,7 +41,12 @@ models:
           values:
           - 1
           quote: false
-- name: stg_circuits
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
+    - not_null
+- name: stg_motogp__grand_prix_events_held
   description: Référentiel des circuits ; total historique non comparable au nombre
     de lignes de victoires.
   columns:
@@ -63,7 +64,12 @@ models:
     data_tests:
     - not_null
     - non_negative
-- name: stg_constructor_championships
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
+    - not_null
+- name: stg_motogp__constructor_world_championship
   description: Titres constructeurs par saison et catégorie.
   columns:
   - name: season
@@ -79,7 +85,12 @@ models:
     description: class name
     data_tests:
     - not_null
-- name: stg_riders_finishing_positions
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
+    - not_null
+- name: stg_motogp__riders_finishing_positions
   description: Statistiques de carrière conservées sans fusion des homonymes.
   columns:
   - name: rider_name
@@ -119,7 +130,12 @@ models:
     data_tests:
     - not_null
     - non_negative
-- name: stg_riders_info
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
+    - not_null
+- name: stg_motogp__riders_info
   description: Statistiques source non réconciliées avec les autres fichiers.
   columns:
   - name: source_rider_name
@@ -151,7 +167,12 @@ models:
     description: world championships
     data_tests:
     - non_negative
-- name: stg_nation_podiums
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
+    - not_null
+- name: stg_motogp__same_nation_podium_lockouts
   description: Occurrences de podiums intégralement occupés par une même nation.
   columns:
   - name: season
@@ -170,4 +191,9 @@ models:
   - name: class_name
     description: class name
     data_tests:
+    - not_null
+  - name: source_row_id
+    description: Identifiant technique de la ligne importée.
+    data_tests:
+    - unique
     - not_null

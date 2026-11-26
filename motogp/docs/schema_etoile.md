@@ -1,6 +1,6 @@
 # Étoile des victoires enregistrées
 
-![Schéma en étoile MotoGP](schema_etoile.svg)
+![Schéma en étoile MotoGP](schema_etoile.png)
 
 ```mermaid
 erDiagram

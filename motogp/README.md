@@ -61,12 +61,17 @@ Nos questions : quels pilotes gagnent le plus par saison et catégorie, comment 
 
 Les CSV contiennent 3 083 lignes de victoires, entre 1949 et 2022, sur neuf catégories. La couverture est partielle. Les neuf occurrences supplémentaires de lignes identiques sont conservées, faute d'identifiant de course. Les classements calculés ne sont pas les classements officiels du championnat.
 
-Provenance du dataset, auteur et licence : à renseigner.
+Source : [Moto GP World Championship (1949–2022)](https://www.kaggle.com/datasets/alrizacelk/moto-gp-world-championship19492022/data), publié par ALİ RIZA CELİK (`alrizacelk`) sur Kaggle. Licence indiquée : **CC0 — domaine public**.
 
 ## Documents
 
-- [Brief du groupe](docs/BRIEF_EQUIPE.txt)
 - [Vérification des consignes](docs/verification_rendu.md)
 - [Schéma en étoile](docs/schema_etoile.md)
 - [Résultats de validation](docs/validation.md)
 - [Présentation avec graphiques](docs/Presentation_MotoGP.pptx)
+
+## Groupe
+
+Quentin Ott, Mathis Chabault, Herman Tongo, Saoban Radji.
+
+Le schéma demandé est dans `docs/schema_etoile.png`. Les plans et mesures avant/après index sont dans `docs/performance/`. Pour refaire le benchmark sur 10 M de lignes synthétiques : `.venv/bin/python scripts/benchmark.py` (Windows : `.venv\Scripts\python.exe scripts/benchmark.py`).

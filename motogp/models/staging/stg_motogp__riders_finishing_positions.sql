@@ -1,5 +1,6 @@
 -- Preserve homonyms/duplicates. Do not join this model to wins on rider_name alone.
-select nullif(trim(rider), '') as rider_name,
+select cast(source_row_id as bigint) as source_row_id,
+       nullif(trim(rider), '') as rider_name,
        nullif(trim(country), '') as rider_country,
        cast(victories as integer) as career_wins,
        cast(number_of_second as integer) as second_places,

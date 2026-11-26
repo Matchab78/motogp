@@ -1,6 +1,7 @@
 -- Keep original name order. Automated inversion of multi-part names is unsafe.
 -- No join to the star until a verified rider mapping is available.
-select nullif(trim(rider), '') as source_rider_name,
+select cast(source_row_id as bigint) as source_row_id,
+       nullif(trim(rider), '') as source_rider_name,
        cast(victories as integer) as career_wins,
        cast(second_places as numeric) as second_places,
        cast(third_places as numeric) as third_places,

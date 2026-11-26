@@ -13,6 +13,11 @@ sources:
         clé unique.
       data_tests:
       - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
+      - not_null
   - name: grand_prix_events_held
     description: Référentiel de circuits et total historique de courses déclaré par
       le fichier.
@@ -22,6 +27,11 @@ sources:
         clé unique.
       data_tests:
       - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
+      - not_null
   - name: grand_prix_race_winners
     description: Victoires enregistrées, sans date ni identifiant de course.
     columns:
@@ -29,6 +39,11 @@ sources:
       description: Attribut source obligatoire ; ne constitue pas nécessairement une
         clé unique.
       data_tests:
+      - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
       - not_null
   - name: riders_finishing_positions
     description: Statistiques de carrière par pilote, avec homonymes ou doublons possibles.
@@ -38,6 +53,11 @@ sources:
         clé unique.
       data_tests:
       - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
+      - not_null
   - name: riders_info
     description: Statistiques de carrière ; noms inversés et métriques parfois incohérentes.
     columns:
@@ -46,6 +66,11 @@ sources:
         clé unique.
       data_tests:
       - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
+      - not_null
   - name: same_nation_podium_lockouts
     description: Podiums monopolisés par une même nation.
     columns:
@@ -53,4 +78,9 @@ sources:
       description: Attribut source obligatoire ; ne constitue pas nécessairement une
         clé unique.
       data_tests:
+      - not_null
+    - name: source_row_id
+      description: Identifiant technique de la ligne importée.
+      data_tests:
+      - unique
       - not_null
