@@ -1,0 +1,142 @@
+version: 2
+models:
+- name: dim_riders
+  description: 'Identité prudente : nom et pays source. Aucun rapprochement automatique
+    des homonymes.'
+  columns:
+  - name: rider_key
+    description: rider key
+    data_tests:
+    - unique
+    - not_null
+  - name: rider_name
+    description: rider name
+    data_tests:
+    - not_null
+  - name: rider_country
+    description: rider country
+    data_tests: []
+- name: dim_constructors
+  description: Constructeurs avec membre pour les valeurs inconnues.
+  columns:
+  - name: constructor_key
+    description: constructor key
+    data_tests:
+    - unique
+    - not_null
+  - name: constructor_name
+    description: constructor name
+    data_tests: []
+  - name: constructor_label
+    description: constructor label
+    data_tests:
+    - not_null
+- name: dim_circuits
+  description: Circuits observés dans les victoires, enrichis du référentiel.
+  columns:
+  - name: circuit_key
+    description: circuit key
+    data_tests:
+    - unique
+    - not_null
+  - name: circuit_name
+    description: circuit name
+    data_tests:
+    - unique
+    - not_null
+  - name: circuit_country
+    description: circuit country
+    data_tests: []
+  - name: circuit_matched
+    description: circuit matched
+    data_tests:
+    - not_null
+- name: dim_seasons
+  description: Saisons et décennies observées, sans jour ni mois inventé.
+  columns:
+  - name: season_key
+    description: season key
+    data_tests:
+    - unique
+    - not_null
+  - name: season
+    description: season
+    data_tests:
+    - unique
+    - not_null
+  - name: decade
+    description: decade
+    data_tests:
+    - not_null
+- name: dim_classes
+  description: Catégories historiques telles que nommées par la source.
+  columns:
+  - name: class_key
+    description: class key
+    data_tests:
+    - unique
+    - not_null
+  - name: class_name
+    description: class name
+    data_tests:
+    - unique
+    - not_null
+- name: fct_wins
+  description: 'Grain : une ligne de victoire enregistrée dans data2, toutes catégories
+    disponibles.'
+  columns:
+  - name: win_id
+    description: Identifiant technique de la ligne de victoire ; pas un identifiant
+      de course.
+    data_tests:
+    - unique
+    - not_null
+  - name: rider_key
+    description: Clé étrangère vers dim_riders
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_riders')
+          field: rider_key
+  - name: constructor_key
+    description: Clé étrangère vers dim_constructors
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_constructors')
+          field: constructor_key
+  - name: circuit_key
+    description: Clé étrangère vers dim_circuits
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_circuits')
+          field: circuit_key
+  - name: season_key
+    description: Clé étrangère vers dim_seasons
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_seasons')
+          field: season_key
+  - name: class_key
+    description: Clé étrangère vers dim_classes
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_classes')
+          field: class_key
+  - name: win_count
+    description: Une victoire enregistrée par ligne.
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values:
+          - 1
+          quote: false

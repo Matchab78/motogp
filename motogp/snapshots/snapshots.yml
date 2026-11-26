@@ -1,0 +1,20 @@
+version: 2
+snapshots:
+  - name: snap_circuits
+    description: "SCD2 des attributs du circuit, observés depuis le premier lancement ; ne reconstitue pas le passé des CSV."
+    columns:
+      - name: dbt_scd_id
+        description: "Identifiant dbt de la version."
+        data_tests: [unique, not_null]
+      - name: circuit_name
+        description: "Clé métier du circuit."
+        data_tests: [not_null]
+      - name: circuit_country
+        description: "Pays du circuit pour cette version."
+      - name: historical_events_reported
+        description: "Total historique déclaré pour cette version."
+      - name: dbt_valid_from
+        description: "Début de validité observé par dbt."
+        data_tests: [not_null]
+      - name: dbt_valid_to
+        description: "Fin de validité ; NULL pour la version courante."

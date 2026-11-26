@@ -1,13 +1,56 @@
 version: 2
-
 sources:
-  - name: motogp_raw
-    database: motogp
-    schema: f1
-    tables:
-      - name: constructor_world_championship
-      - name: grand_prix_events_held
-      - name: grand_prix_race_winners
-      - name: riders_finishing_positions
-      - name: riders_info
-      - name: same_nation_podium_lockouts
+- name: motogp_raw
+  description: Les six CSV data2, importés dans PostgreSQL avec les colonnes snake_case.
+  database: '{{ env_var(''DBT_RAW_DATABASE'', target.database) }}'
+  schema: '{{ env_var(''DBT_RAW_SCHEMA'', ''f1'') }}'
+  tables:
+  - name: constructor_world_championship
+    description: Titres constructeurs par saison et catégorie.
+    columns:
+    - name: season
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null
+  - name: grand_prix_events_held
+    description: Référentiel de circuits et total historique de courses déclaré par
+      le fichier.
+    columns:
+    - name: track
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null
+  - name: grand_prix_race_winners
+    description: Victoires enregistrées, sans date ni identifiant de course.
+    columns:
+    - name: rider
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null
+  - name: riders_finishing_positions
+    description: Statistiques de carrière par pilote, avec homonymes ou doublons possibles.
+    columns:
+    - name: rider
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null
+  - name: riders_info
+    description: Statistiques de carrière ; noms inversés et métriques parfois incohérentes.
+    columns:
+    - name: rider
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null
+  - name: same_nation_podium_lockouts
+    description: Podiums monopolisés par une même nation.
+    columns:
+    - name: season
+      description: Attribut source obligatoire ; ne constitue pas nécessairement une
+        clé unique.
+      data_tests:
+      - not_null

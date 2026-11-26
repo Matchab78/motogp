@@ -1,5 +1,11 @@
-
+.venv/
+.connection.json
+/profiles.yml
+.env
+.env.*
+!.env.example
 target/
 dbt_packages/
 logs/
-.env
+__pycache__/
+*.pyc

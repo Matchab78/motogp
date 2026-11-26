@@ -1,0 +1,156 @@
+{
+  "constructor_world_championship": {
+    "file": "constructure-world-championship.csv",
+    "columns": [
+      [
+        "season",
+        "INTEGER"
+      ],
+      [
+        "constructor",
+        "TEXT"
+      ],
+      [
+        "class",
+        "TEXT"
+      ]
+    ]
+  },
+  "grand_prix_events_held": {
+    "file": "grand-prix-events-held.csv",
+    "columns": [
+      [
+        "times",
+        "INTEGER"
+      ],
+      [
+        "track",
+        "TEXT"
+      ],
+      [
+        "country",
+        "TEXT"
+      ]
+    ]
+  },
+  "grand_prix_race_winners": {
+    "file": "grand-prix-race-winners.csv",
+    "columns": [
+      [
+        "circuit",
+        "TEXT"
+      ],
+      [
+        "class",
+        "TEXT"
+      ],
+      [
+        "constructor",
+        "TEXT"
+      ],
+      [
+        "country",
+        "TEXT"
+      ],
+      [
+        "rider",
+        "TEXT"
+      ],
+      [
+        "season",
+        "INTEGER"
+      ]
+    ]
+  },
+  "riders_finishing_positions": {
+    "file": "riders-finishing-positions.csv",
+    "columns": [
+      [
+        "rider",
+        "TEXT"
+      ],
+      [
+        "victories",
+        "INTEGER"
+      ],
+      [
+        "number_of_second",
+        "INTEGER"
+      ],
+      [
+        "number_of_third",
+        "INTEGER"
+      ],
+      [
+        "number_of_4th",
+        "INTEGER"
+      ],
+      [
+        "number_of_5th",
+        "INTEGER"
+      ],
+      [
+        "number_of_6th",
+        "INTEGER"
+      ],
+      [
+        "country",
+        "TEXT"
+      ]
+    ]
+  },
+  "riders_info": {
+    "file": "riders-info.csv",
+    "columns": [
+      [
+        "rider",
+        "TEXT"
+      ],
+      [
+        "victories",
+        "INTEGER"
+      ],
+      [
+        "second_places",
+        "NUMERIC"
+      ],
+      [
+        "third_places",
+        "NUMERIC"
+      ],
+      [
+        "pole_positions_1974_2022",
+        "NUMERIC"
+      ],
+      [
+        "race_fastest_lap_to_2022",
+        "NUMERIC"
+      ],
+      [
+        "world_championships",
+        "NUMERIC"
+      ]
+    ]
+  },
+  "same_nation_podium_lockouts": {
+    "file": "same-nation-podium-lockouts.csv",
+    "columns": [
+      [
+        "season",
+        "INTEGER"
+      ],
+      [
+        "track",
+        "TEXT"
+      ],
+      [
+        "riders_nation",
+        "TEXT"
+      ],
+      [
+        "class",
+        "TEXT"
+      ]
+    ]
+  }
+}

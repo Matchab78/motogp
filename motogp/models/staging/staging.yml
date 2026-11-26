@@ -1,0 +1,173 @@
+version: 2
+models:
+- name: stg_race_winners
+  description: Toutes les victoires source conservées, y compris les doublons apparents.
+  columns:
+  - name: win_id
+    description: Empreinte de la ligne nettoyée et de son numéro parmi les doublons.
+    data_tests:
+    - unique
+    - not_null
+  - name: season
+    description: Saison enregistrée dans le fichier.
+    data_tests:
+    - not_null
+    - non_negative
+  - name: circuit_name
+    description: Nom du circuit.
+    data_tests:
+    - not_null
+  - name: class_name
+    description: Catégorie telle que libellée par la source.
+    data_tests:
+    - not_null
+  - name: constructor_name
+    description: Constructeur ; valeur manquante conservée.
+    data_tests: []
+  - name: rider_country
+    description: Code pays attribué au pilote, parfois manquant.
+    data_tests: []
+  - name: rider_name
+    description: Nom du pilote tel que nettoyé.
+    data_tests:
+    - not_null
+  - name: duplicate_ordinal
+    description: Occurrence parmi les lignes identiques.
+    data_tests:
+    - not_null
+    - non_negative
+  - name: win_count
+    description: 'Mesure additive : une victoire enregistrée.'
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values:
+          - 1
+          quote: false
+- name: stg_circuits
+  description: Référentiel des circuits ; total historique non comparable au nombre
+    de lignes de victoires.
+  columns:
+  - name: circuit_name
+    description: circuit name
+    data_tests:
+    - unique
+    - not_null
+  - name: circuit_country
+    description: circuit country
+    data_tests:
+    - not_null
+  - name: historical_events_reported
+    description: historical events reported
+    data_tests:
+    - not_null
+    - non_negative
+- name: stg_constructor_championships
+  description: Titres constructeurs par saison et catégorie.
+  columns:
+  - name: season
+    description: season
+    data_tests:
+    - not_null
+    - non_negative
+  - name: constructor_name
+    description: constructor name
+    data_tests:
+    - not_null
+  - name: class_name
+    description: class name
+    data_tests:
+    - not_null
+- name: stg_riders_finishing_positions
+  description: Statistiques de carrière conservées sans fusion des homonymes.
+  columns:
+  - name: rider_name
+    description: rider name
+    data_tests:
+    - not_null
+  - name: rider_country
+    description: rider country
+    data_tests: []
+  - name: career_wins
+    description: career wins
+    data_tests:
+    - not_null
+    - non_negative
+  - name: second_places
+    description: second places
+    data_tests:
+    - not_null
+    - non_negative
+  - name: third_places
+    description: third places
+    data_tests:
+    - not_null
+    - non_negative
+  - name: fourth_places
+    description: fourth places
+    data_tests:
+    - not_null
+    - non_negative
+  - name: fifth_places
+    description: fifth places
+    data_tests:
+    - not_null
+    - non_negative
+  - name: sixth_places
+    description: sixth places
+    data_tests:
+    - not_null
+    - non_negative
+- name: stg_riders_info
+  description: Statistiques source non réconciliées avec les autres fichiers.
+  columns:
+  - name: source_rider_name
+    description: source rider name
+    data_tests:
+    - unique
+    - not_null
+  - name: career_wins
+    description: career wins
+    data_tests:
+    - non_negative
+  - name: second_places
+    description: second places
+    data_tests:
+    - non_negative
+  - name: third_places
+    description: third places
+    data_tests:
+    - non_negative
+  - name: pole_positions_1974_2022
+    description: pole positions 1974 2022
+    data_tests:
+    - non_negative
+  - name: fastest_laps_to_2022
+    description: fastest laps to 2022
+    data_tests:
+    - non_negative
+  - name: world_championships
+    description: world championships
+    data_tests:
+    - non_negative
+- name: stg_nation_podiums
+  description: Occurrences de podiums intégralement occupés par une même nation.
+  columns:
+  - name: season
+    description: season
+    data_tests:
+    - not_null
+    - non_negative
+  - name: circuit_name
+    description: circuit name
+    data_tests:
+    - not_null
+  - name: riders_country
+    description: riders country
+    data_tests:
+    - not_null
+  - name: class_name
+    description: class name
+    data_tests:
+    - not_null

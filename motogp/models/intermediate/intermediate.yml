@@ -1,0 +1,49 @@
+version: 2
+models:
+- name: int_race_winners_enriched
+  description: Victoires enrichies du pays du circuit sans supprimer les circuits
+    non reconnus.
+  columns:
+  - name: win_id
+    description: win id
+    data_tests:
+    - unique
+    - not_null
+  - name: season
+    description: Saison enregistrée dans le fichier.
+    data_tests:
+    - not_null
+    - non_negative
+  - name: circuit_name
+    description: Nom du circuit.
+    data_tests:
+    - not_null
+  - name: class_name
+    description: Catégorie telle que libellée par la source.
+    data_tests:
+    - not_null
+  - name: constructor_name
+    description: Constructeur ; valeur manquante conservée.
+    data_tests: []
+  - name: rider_country
+    description: Code pays attribué au pilote, parfois manquant.
+    data_tests: []
+  - name: rider_name
+    description: Nom du pilote tel que nettoyé.
+    data_tests:
+    - not_null
+  - name: duplicate_ordinal
+    description: duplicate ordinal
+    data_tests: []
+  - name: win_count
+    description: win count
+    data_tests:
+    - not_null
+    - non_negative
+  - name: circuit_country
+    description: circuit country
+    data_tests: []
+  - name: circuit_matched
+    description: circuit matched
+    data_tests:
+    - not_null

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720">
+<rect width="1180" height="720" fill="#f8fafc"/>
+<style>text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:25px;font-weight:bold}.head{font-size:19px;font-weight:bold;fill:white}.row{font-size:16px}.small{font-size:15px;fill:#475569}</style>
+<text x="35" y="42" class="title">MotoGP — étoile des victoires enregistrées</text>
+<text x="35" y="70" class="small">Grain : une ligne source de victoire. Mesure additive : win_count = 1.</text>
+<line x1="340" y1="175" x2="445" y2="270" stroke="#64748b" stroke-width="2"/>
+<text x="346" y="167" class="small">1</text><text x="451" y="262" class="small">N</text>
+<line x1="340" y1="400" x2="445" y2="350" stroke="#64748b" stroke-width="2"/>
+<text x="346" y="392" class="small">1</text><text x="451" y="342" class="small">N</text>
+<line x1="840" y1="175" x2="735" y2="270" stroke="#64748b" stroke-width="2"/>
+<text x="846" y="167" class="small">1</text><text x="741" y="262" class="small">N</text>
+<line x1="840" y1="400" x2="735" y2="350" stroke="#64748b" stroke-width="2"/>
+<text x="846" y="392" class="small">1</text><text x="741" y="342" class="small">N</text>
+<line x1="590" y1="545" x2="590" y2="475" stroke="#64748b" stroke-width="2"/>
+<text x="596" y="537" class="small">1</text><text x="596" y="467" class="small">N</text>
+<rect x="35" y="110" width="305" height="129" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M43,110 H332 Q340,110 340,118 V150 H35 V118 Q35,110 43,110" fill="#334155"/>
+<text x="49" y="137" class="head">dim_riders</text>
+<text x="49" y="175" class="row">PK rider_key</text>
+<text x="49" y="202" class="row">rider_name</text>
+<text x="49" y="229" class="row">rider_country</text>
+<rect x="35" y="325" width="305" height="129" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M43,325 H332 Q340,325 340,333 V365 H35 V333 Q35,325 43,325" fill="#334155"/>
+<text x="49" y="352" class="head">dim_constructors</text>
+<text x="49" y="390" class="row">PK constructor_key</text>
+<text x="49" y="417" class="row">constructor_name</text>
+<text x="49" y="444" class="row">constructor_label</text>
+<rect x="840" y="110" width="305" height="156" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M848,110 H1137 Q1145,110 1145,118 V150 H840 V118 Q840,110 848,110" fill="#334155"/>
+<text x="854" y="137" class="head">dim_circuits</text>
+<text x="854" y="175" class="row">PK circuit_key</text>
+<text x="854" y="202" class="row">circuit_name</text>
+<text x="854" y="229" class="row">circuit_country</text>
+<text x="854" y="256" class="row">circuit_matched</text>
+<rect x="840" y="345" width="305" height="102" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M848,345 H1137 Q1145,345 1145,353 V385 H840 V353 Q840,345 848,345" fill="#334155"/>
+<text x="854" y="372" class="head">dim_classes</text>
+<text x="854" y="410" class="row">PK class_key</text>
+<text x="854" y="437" class="row">class_name</text>
+<rect x="445" y="220" width="290" height="237" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M453,220 H727 Q735,220 735,228 V260 H445 V228 Q445,220 453,220" fill="#1d4ed8"/>
+<text x="459" y="247" class="head">fct_wins</text>
+<text x="459" y="285" class="row">PK win_id</text>
+<text x="459" y="312" class="row">FK rider_key</text>
+<text x="459" y="339" class="row">FK constructor_key</text>
+<text x="459" y="366" class="row">FK circuit_key</text>
+<text x="459" y="393" class="row">FK season_key</text>
+<text x="459" y="420" class="row">FK class_key</text>
+<text x="459" y="447" class="row">win_count</text>
+<rect x="435" y="545" width="310" height="129" rx="8" fill="white" stroke="#cbd5e1"/>
+<path d="M443,545 H737 Q745,545 745,553 V585 H435 V553 Q435,545 443,545" fill="#334155"/>
+<text x="449" y="572" class="head">dim_seasons</text>
+<text x="449" y="610" class="row">PK season_key</text>
+<text x="449" y="637" class="row">season</text>
+<text x="449" y="664" class="row">decade</text>
+<text x="35" y="694" class="small">PK/FK logiques vérifiées par dbt. Snapshot SCD2 des circuits conservé séparément.</text>
+</svg>
