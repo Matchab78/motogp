@@ -20,8 +20,13 @@ DBT = VENV / ('Scripts/dbt.exe' if os.name == 'nt' else 'bin/dbt')
 def setup():
     if not ((3, 10) <= sys.version_info[:2] <= (3, 13)):
         raise SystemExit('Utiliser Python 3.10 à 3.13 (3.12 recommandé). Sur Windows : py -3.12 run.py setup')
+    # Resolve launcher symlinks so portable Python finds its standard library.
+    resolved_python = Path(sys.executable).resolve()
+    if os.name != 'nt' and Path(sys.executable) != resolved_python:
+        subprocess.run([str(resolved_python), str(Path(__file__).resolve()), 'setup'], check=True)
+        return
     if not PYTHON.exists():
-        venv.EnvBuilder(with_pip=True).create(VENV)
+        venv.EnvBuilder(with_pip=True, symlinks=os.name != 'nt').create(VENV)
     subprocess.run([str(PYTHON), '-m', 'pip', 'install', '-r', str(ROOT / 'requirements.txt')], check=True)
     print('Installation terminée. Puis : python run.py configure')
 
