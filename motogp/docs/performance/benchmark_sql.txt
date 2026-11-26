@@ -1,0 +1,133 @@
+Pager usage is off.
+Timing is on.
+SELECT 10000000
+Time: 7722.649 ms (00:07.723)
+ lignes_de_test 
+----------------
+       10000000
+(1 row)
+
+Time: 1082.807 ms (00:01.083)
+Time: 10.136 ms
+ANALYZE
+Time: 303.494 ms
+TEST 1 : SANS INDEX — trois executions de la meme requete
+                                                          QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=243524.55..243524.56 rows=1 width=8) (actual time=439.216..439.216 rows=1 loops=1)
+   Buffers: local read=93504
+   ->  Seq Scan on benchmark_wins  (cost=0.00..243522.90 rows=661 width=4) (actual time=4.403..438.316 rows=16220 loops=1)
+         Filter: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Rows Removed by Filter: 9983780
+         Buffers: local read=93504
+ Planning:
+   Buffers: shared hit=23
+ Planning Time: 0.118 ms
+ JIT:
+   Functions: 5
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 0.414 ms (Deform 0.118 ms), Inlining 0.000 ms, Optimization 0.430 ms, Emission 3.978 ms, Total 4.821 ms
+ Execution Time: 439.704 ms
+(14 rows)
+
+Time: 453.581 ms
+                                                          QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=243524.55..243524.56 rows=1 width=8) (actual time=446.582..446.583 rows=1 loops=1)
+   Buffers: local read=93504
+   ->  Seq Scan on benchmark_wins  (cost=0.00..243522.90 rows=661 width=4) (actual time=2.524..445.673 rows=16220 loops=1)
+         Filter: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Rows Removed by Filter: 9983780
+         Buffers: local read=93504
+ Planning Time: 0.096 ms
+ JIT:
+   Functions: 5
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 0.308 ms (Deform 0.076 ms), Inlining 0.000 ms, Optimization 0.283 ms, Emission 2.253 ms, Total 2.844 ms
+ Execution Time: 446.953 ms
+(12 rows)
+
+Time: 447.356 ms
+                                                          QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=243524.55..243524.56 rows=1 width=8) (actual time=431.807..431.808 rows=1 loops=1)
+   Buffers: local read=93504
+   ->  Seq Scan on benchmark_wins  (cost=0.00..243522.90 rows=661 width=4) (actual time=1.828..430.906 rows=16220 loops=1)
+         Filter: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Rows Removed by Filter: 9983780
+         Buffers: local read=93504
+ Planning Time: 0.046 ms
+ JIT:
+   Functions: 5
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 0.175 ms (Deform 0.054 ms), Inlining 0.000 ms, Optimization 0.125 ms, Emission 1.727 ms, Total 2.027 ms
+ Execution Time: 432.151 ms
+(12 rows)
+
+Time: 432.510 ms
+SELECT 1
+Time: 409.732 ms
+CREATE INDEX
+Time: 18013.982 ms (00:18.014)
+ANALYZE
+Time: 281.854 ms
+TEST 2 : AVEC INDEX — trois executions de la meme requete
+                                                                   QUERY PLAN                                                                    
+-------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=2456.29..2456.30 rows=1 width=8) (actual time=35.395..35.398 rows=1 loops=1)
+   Buffers: local read=4322
+   ->  Bitmap Heap Scan on benchmark_wins  (cost=11.11..2454.66 rows=651 width=4) (actual time=0.762..34.254 rows=16220 loops=1)
+         Recheck Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Heap Blocks: exact=4304
+         Buffers: local read=4322
+         ->  Bitmap Index Scan on benchmark_saison_pilote_idx  (cost=0.00..10.95 rows=651 width=0) (actual time=0.423..0.423 rows=16220 loops=1)
+               Index Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+               Buffers: local read=18
+ Planning:
+   Buffers: shared hit=23, local read=1
+ Planning Time: 0.267 ms
+ Execution Time: 38.926 ms
+(13 rows)
+
+Time: 39.790 ms
+                                                                   QUERY PLAN                                                                    
+-------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=2456.29..2456.30 rows=1 width=8) (actual time=19.113..19.114 rows=1 loops=1)
+   Buffers: local read=4322
+   ->  Bitmap Heap Scan on benchmark_wins  (cost=11.11..2454.66 rows=651 width=4) (actual time=0.830..18.178 rows=16220 loops=1)
+         Recheck Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Heap Blocks: exact=4304
+         Buffers: local read=4322
+         ->  Bitmap Index Scan on benchmark_saison_pilote_idx  (cost=0.00..10.95 rows=651 width=0) (actual time=0.493..0.493 rows=16220 loops=1)
+               Index Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+               Buffers: local read=18
+ Planning Time: 0.139 ms
+ Execution Time: 19.133 ms
+(11 rows)
+
+Time: 19.593 ms
+                                                                   QUERY PLAN                                                                    
+-------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=2456.29..2456.30 rows=1 width=8) (actual time=13.984..13.984 rows=1 loops=1)
+   Buffers: local read=4322
+   ->  Bitmap Heap Scan on benchmark_wins  (cost=11.11..2454.66 rows=651 width=4) (actual time=0.753..13.289 rows=16220 loops=1)
+         Recheck Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+         Heap Blocks: exact=4304
+         Buffers: local read=4322
+         ->  Bitmap Index Scan on benchmark_saison_pilote_idx  (cost=0.00..10.95 rows=651 width=0) (actual time=0.422..0.422 rows=16220 loops=1)
+               Index Cond: ((season_key = 2021) AND (rider_key = '78a4091ec690c2a17837bceea8e61c4a'::text))
+               Buffers: local read=18
+ Planning Time: 0.035 ms
+ Execution Time: 13.994 ms
+(11 rows)
+
+Time: 14.167 ms
+SELECT 1
+Time: 43.756 ms
+CONTROLE : resultat identique avant / apres index
+ avant_index | apres_index | resultats_identiques 
+-------------+-------------+----------------------
+       16220 |       16220 | t
+(1 row)
+
+Time: 0.368 ms

@@ -74,4 +74,4 @@ Source : [Moto GP World Championship (1949–2022)](https://www.kaggle.com/datas
 
 Quentin Ott, Mathis Chabault, Herman Tongo, Saoban Radji.
 
-Le schéma demandé est dans `docs/schema_etoile.png`. Les plans et mesures avant/après index sont dans `docs/performance/`. Pour refaire le benchmark sur 10 M de lignes synthétiques : `.venv/bin/python scripts/benchmark.py` (Windows : `.venv\Scripts\python.exe scripts/benchmark.py`).
+Le schéma demandé est dans `docs/schema_etoile.png`. Les plans et mesures avant/après index sont dans `docs/performance/`. Benchmark SQL : `sql/benchmark.sql`. Commandes et comparaison des deux tests dans [docs/performance/README.md](docs/performance/README.md).
